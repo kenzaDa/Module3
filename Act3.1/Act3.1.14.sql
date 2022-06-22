@@ -1,0 +1,1 @@
+SELECT ROUND(AVG(nbr_siege) ,1) AS "moyenne" FROM salle;
