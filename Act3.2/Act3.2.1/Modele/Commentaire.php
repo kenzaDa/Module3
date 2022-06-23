@@ -15,9 +15,9 @@ class Commentaire extends Modele {
 
     // Ajoute un commentaire dans la base
     public function ajouterCommentaire($auteur, $texte, $idArticle) {
-        $sql = 'insert into commentaires(id,  auteur ,texte,article_id)'
+        $sql = 'insert into commentaires( auteur ,texte,date_publication,article_id)'
             . ' values(?, ?, ?, ?)';
         $date = date(DATE_W3C);  // Récupère la date courante
-        $this->executerRequete($sql, array($date, $auteur, $texte, $date));
+        $this->executerRequete($sql, array( $auteur, $texte, $date,$idArticle));
     }
 }

@@ -39,7 +39,7 @@ class Routeur {
                     $auteur = $this->getParametre($_POST, 'auteur');
                     $date_publication = $this->getParametre($_POST, 'date_publication');
                     //  $idArticle = $this->getParametre($_POST, 'id');
-                    $this->ctrlarticle->addingArticle( $titre ,$texte, $auteur , $date_publication);
+                    $this->ctrlarticle->addArticle( $titre ,$texte, $auteur , $date_publication);
                 }
 
 
