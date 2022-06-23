@@ -27,7 +27,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Texte </label>
-            <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3" placeholder="Texte de l'article"></textarea>
+            <textarea class="form-control" name="texte" id="exampleFormControlTextarea1" rows="3" placeholder="Texte de l'article"></textarea>
         </div> 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Auteur</label>

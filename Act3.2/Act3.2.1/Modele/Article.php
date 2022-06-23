@@ -34,9 +34,12 @@ class Article extends Modele {
 
 //  Ajoute un article dans la base
  public function addArticle( $titre ,$texte, $auteur , $date_publication) {
+
     $sql = 'insert into articles(titre,  texte, auteur,date_publication)'
         . ' values(?, ?, ?, ?)';
-    $this->executerRequete($sql, array( $titre ,$texte, $auteur , $date_publication));
+       
+     $this->executerRequete($sql, array( $titre ,$texte, $auteur , $date_publication));
+    
 }
 
 

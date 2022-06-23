@@ -6,7 +6,7 @@ require_once 'Vue/Vue.php';
 
 class ControleurArticle {
 
-    private $Article;
+    private $article;
     private $commentaire;
 
     public function __construct() {
@@ -27,7 +27,7 @@ class ControleurArticle {
         // Sauvegarde du commentaire
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idArticle);
         // Actualisation de l'affichage du Article
-        $this->Article($idArticle);
+        $this->article($idArticle);
     }
 
       // Ajoute Article
@@ -35,17 +35,27 @@ class ControleurArticle {
     //     // Sauvegarde du commentaire
     //     $this->article->addingArticle( $titre ,$texte, $auteur , $date_publication);
     //     // Actualisation de l'affichage du Article
-    //     // $this->Article($idArticle);
-    
-    public function addArticle($titre,$texte,$auteur,$date_publication){
-        $sqlQuery = 'INSERT INTO articles(titre, texte, auteur, date_publication) VALUES (:titre, :texte, :auteur, :date_publication)';
-        $insertArticle = $this->db->prepare($sqlQuery);
-        $insertArticle->execute([
-            'titre' => $titre,
-            'texte' => $texte,
-            'auteur' => $auteur,
-            'date_publication' => $date_publication, 
-        ]);
-    }
+    //     // $this->Article($idArticle);//  Ajoute un article dans la base
+ public function addArticle( $titre ,$texte, $auteur , $date_publication) {
 
-}
+    $sql = 'insert into articles(titre,  texte, auteur,date_publication)'
+        . ' values(?, ?, ?, ?)';
+       
+     $this->executerRequete($sql, array( $titre ,$texte, $auteur , $date_publication));}
+    
+    public function addingArticle($titre,$texte,$auteur,$date_publication){
+        $this->article->addArticle( $titre ,$texte, $auteur , $date_publication) ;
+        
+    }
+//  Ajoute un article dans la base
+
+// public function addArticle( $titre ,$texte, $auteur , $date_publication) {
+
+//     $sql = 'insert into articles(titre,  texte, auteur,date_publication)'
+
+//         . ' values(?, ?, ?, ?)';
+
+//     $this->executerRequete($sql, array($idArticle, $titre ,$texte, $auteur , $date_publication));
+
+// }
+ }
