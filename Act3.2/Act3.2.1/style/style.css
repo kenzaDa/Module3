@@ -1,0 +1,57 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    color: #1f1e1e;
+    background: rgb(249, 246, 246);
+    font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    color: rgb(15, 14, 14);
+}
+
+.titreBillet {
+    margin-bottom : 0px;
+}
+
+#global {
+    min-height: 100%;  /* Voir commentaire sur html et body plus haut */
+    background: #eeefee;
+    width: 70%;
+    margin: auto;	/* Permet de centrer la div */
+    text-align: justify;
+    padding: 5px 20px;
+}
+
+#contenu {
+    margin-bottom : 30px;
+}
+
+.titreBlog, #piedBlog {
+    text-align: center;
+}
+
+#titreReponses {
+    font-size : 100%;
+}
+
+#txtCommentaire {
+    width: 50%;
+}
+.titre {
+    margin: auto;
+}
+.content{
+    margin-top: 50px;
+    min-height: 70vh;
+}
+.container{
+    margin-left : 600px;
+    margin-top: 50px;
+    
+}
+.mb-3{
+    margin-top: 50px;
+}
