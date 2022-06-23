@@ -32,13 +32,19 @@ class Routeur {
                     $idarticle = $this->getParametre($_POST, 'id');
                     $this->ctrlarticle->commenter($auteur, $texte, $idarticle);
                 }
-                else if ($_GET['action'] == 'add') {
-                    $titre = $this->getParametre($_POST, 'titre');
-                    $texte = $this->getParametre($_POST, 'texte');
-                    $auteur = $this->getParametre($_POST, 'auteur');
-                    $date_publication = $this->getParametre($_POST, 'date_publication');
-                     $idArticle = $this->getParametre($_POST, 'id');
-                    $this->ctrlarticle->addArticle( $titre ,$texte, $auteur , $date_publication);
+                // else if ($_GET['action'] == 'add'){
+                //     echo 'msg';
+                //     $titre = $this->getParametre($_POST, 'titre');
+                //     $texte = $this->getParametre($_POST, 'texte');
+                //     $auteur = $this->getParametre($_POST, 'auteur');
+                //     $date_publication = $this->getParametre($_POST, 'date_publication');
+                //     //  $idArticle = $this->getParametre($_POST, 'id');
+                //     $this->ctrlarticle->addArticle( $titre ,$texte, $auteur , $date_publication);
+                // }
+
+
+                else if ( isset($_GET['add'])) {
+                    $this->ctrlarticle->addArticle($_POST['titre'],$_POST['text'],$_POST['auteur'],$_POST['date_publication']);
                 }
                 else
                     throw new Exception("Action non valide");

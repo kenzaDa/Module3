@@ -31,11 +31,21 @@ class ControleurArticle {
     }
 
       // Ajoute Article
-      public function addArticle($idArticle, $titre ,$texte, $auteur , $date_publication) {
-        // Sauvegarde du commentaire
-        $this->article->addingArticle($idArticle, $titre ,$texte, $auteur , $date_publication);
-        // Actualisation de l'affichage du Article
-        $this->Article($idArticle);
+    //   public function addArticle($titre ,$texte, $auteur , $date_publication) {
+    //     // Sauvegarde du commentaire
+    //     $this->article->addingArticle( $titre ,$texte, $auteur , $date_publication);
+    //     // Actualisation de l'affichage du Article
+    //     // $this->Article($idArticle);
+    
+    public function addArticle($titre,$texte,$auteur,$date_publication){
+        $sqlQuery = 'INSERT INTO articles(titre, texte, auteur, date_publication) VALUES (:titre, :texte, :auteur, :date_publication)';
+        $insertArticle = $this->db->prepare($sqlQuery);
+        $insertArticle->execute([
+            'titre' => $titre,
+            'texte' => $texte,
+            'auteur' => $auteur,
+            'date_publication' => $date_publication, 
+        ]);
     }
 
 }

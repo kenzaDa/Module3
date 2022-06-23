@@ -33,10 +33,10 @@ class Article extends Modele {
     }
 
 //  Ajoute un article dans la base
- public function addingArticle($idArticle, $titre ,$texte, $auteur , $date_publication) {
-    $sql = 'insert into articles(id, titre,  texte, auteur,date_publication)'
-        . ' values(?, ?, ?, ?,?)';
-    $this->executerRequete($sql, array($idArticle, $titre ,$texte, $auteur , $date_publication));
+ public function addArticle( $titre ,$texte, $auteur , $date_publication) {
+    $sql = 'insert into articles(titre,  texte, auteur,date_publication)'
+        . ' values(?, ?, ?, ?)';
+    $this->executerRequete($sql, array( $titre ,$texte, $auteur , $date_publication));
 }
 
 
