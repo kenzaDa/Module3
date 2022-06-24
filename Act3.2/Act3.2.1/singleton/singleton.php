@@ -2,14 +2,14 @@
 
 class ConnectDb {
     // Hold the class instance.
-    private static $instance = null;
-    private $conn;
+    // private static $instance = null;
+    public static $conn;
     
   
     // The db connection is established in the private constructor.
-    private function __construct()
+    public function __construct()
     {
-        $this->conn = $this->getDb();
+      self::$conn = $this->getDb();
 
     }
     // Magic method clone is empty to prevent duplication of connection
@@ -30,12 +30,12 @@ class ConnectDb {
 
     public static function getInstance()
     {
-      if(!self::$instance)
+      if(!self::$conn)
       {
-        self::$instance = new ConnectDb();
+        self::$conn = new ConnectDb();
       }
      
-      return self::$instance;
+      return self::$conn;
     }
     
     public function getConnection()
@@ -43,5 +43,3 @@ class ConnectDb {
       return $this->conn;
     }
   }
-  
-

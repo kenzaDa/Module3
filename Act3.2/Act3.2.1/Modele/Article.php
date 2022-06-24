@@ -2,13 +2,14 @@
 
 require_once 'Modele/Modele.php';
 
-
+include_once('../singleton/singleton.php');
 class Article extends Modele {
 
     /** Renvoie la liste des articles du blog
      * 
      * @return PDOStatement La liste des articles
      */
+    public static $conn;
     public function getArticles() {
         $sql = 'select id, titre ,texte,auteur,date_publication from articles'
                 . ' order by id desc';
@@ -43,25 +44,45 @@ class Article extends Modele {
 }
 
 
+   // SINGLETON      
+   public static function getDbSing(){
+    if (is_null(self::$conn)) {
+        try
+        {
+            self::$conn = new PDO('mysql:host=localhost;dbname=databasekenza;charset=utf8', 'root', '');
+        }
+        catch (Exception $e)
+        { 
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
+    return self::$conn;
+}
+  public function getArticleSing(){
+    $articlesStatement =self::$conn->prepare('SELECT * FROM articles');
+    $articlesStatement->execute();
+    $articles = $articlesStatement->fetchAll();
+    $this->article = $articles;
+    return $this->article;
+ 
+}
+
+  public function ajouterArticleSing($titre, $text, $auteur, $date_publication) {
+
+    $articlesStatement = self::$conn->prepare('INSERT INTO articles(titre, texte, auteur, date_publication) Values (:titre, :texte, :auteur, :date_publication) ');
+    $articlesStatement->execute([
+      'titre' => $titre,
+      'texte' => $texte,
+      'auteur' => $auteur,
+      'date_publication' => $date_publication, 
+  ]);
+  }
+}
+
+
+
+
 
 
 }
-    // public function deleteArticle($id){
-    //     $sqlQuery = 'DELETE FROM articles WHERE id=:id';
-    //     $deleteArticle = $this->db->prepare($sqlQuery);
-    //     $deleteArticle->execute([
-    //        'id' => $id
-    //     ]);
-    // }
-
-    // public function addArticle($titre,$text,$auteur,$date_publication){
-    //     $sqlQuery = 'INSERT INTO articles(titre, texte, auteur, date_publication) VALUES (:titre, :texte, :auteur, :date_publication)';
-    //     $insertArticle = $this->db->prepare($sqlQuery);
-    //     $insertArticle->execute([
-    //         'titre' => $titre,
-    //         'texte' => $text,
-    //         'auteur' => $auteur,
-    //         'date_publication' => $date_publication, 
-    //     ]);
-    // }
-
+    
