@@ -19,7 +19,7 @@
         <main class=" container content"> 
         <a href="index.php"><h1 class="titre">Ici vous pouvez postez un article</h1></a>
          <br><br>
-        <form action="index.php" method="post">    
+        <form action="index.php?action=add" method="post">    
         <input type="hidden" name="id" value=<?php echo uniqid() ?>>  
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Titre</label>

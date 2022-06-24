@@ -18,6 +18,7 @@ class Routeur {
     public function routerRequete() {
         try {
             if (isset($_GET['action'])) {
+                echo 'msg';
                 if ($_GET['action'] == 'article') {
                     $idarticle = intval($this->getParametre($_GET, 'id'));
                     if ($idarticle != 0) {
