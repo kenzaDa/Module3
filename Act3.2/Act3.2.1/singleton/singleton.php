@@ -18,7 +18,7 @@ class ConnectDb {
     private function getDb(){
         try
         {
-            $conn = new PDO('mysql:host=localhost;dbname=emnadatabase;charset=utf8', 'root', '');
+            $conn = new PDO('mysql:host=localhost;dbname=databasekenza;charset=utf8', 'root', '');
         }
         catch (Exception $e)
         {
